@@ -28,4 +28,30 @@ const addToReadList = (id) =>{
     
 
 };
-export {addToReadList};
+
+const getStoredWishList = () => {
+    // Wish-List
+    const storedWishListStr = localStorage.getItem('Wish-List');
+    if(storedWishListStr){
+        const storedList = JSON.parse(storedWishListStr);
+        return storedList;
+    }
+    else{
+        return[];
+    }
+};
+
+const addToWishList = (id) =>{
+    const storedList = getStoredWishList();
+    if(storedList.includes(id)){
+        // Already in the wishlist . Do not add again
+        console(id , 'Already in Wish list');
+    }
+    else{
+        storedList.push(id);
+        const storedListStr = JSON.stringify(storedList);
+        localStorage.setItem('Wish-List' , storedListStr);
+    }
+};
+
+export {addToReadList , addToWishList};
