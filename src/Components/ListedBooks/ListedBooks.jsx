@@ -14,7 +14,7 @@ const ListedBooks = () => {
 
         const readBookList = allBooks.filter(book => storedReadListInt.includes(book.bookId));
         setReadList(readBookList);
-    },[])
+    },[]);
     return (
         <div>
             <h2 className="text-3xl my-8">Listed Books</h2>
